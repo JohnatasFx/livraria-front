@@ -1,7 +1,3 @@
-main {
-    overflow-x: hidden;
-}
-
 #header {
     display: flex;
     flex-direction: row;
