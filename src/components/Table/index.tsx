@@ -1,36 +1,25 @@
 import { useEffect, useState } from "react";
-import { api } from "../../lib/api";
 import "./style.css"
-
-const getBooks = async () => {
-    const response = await api.get('/book/all');
-    console.log(response.data);
-    return response.data;
-}
 
 interface Book {
     id: string;
     nomeLivro: string;
     nomeAutor: string;
     preco: number;
+  }
+
+interface TableProps {
+    booksData: Book[];
 }
 
-const Table = () => {
-    const [books, setBooks] = useState<Book[]>([]);
+const Table = (props: TableProps) => {
+
     const [thead, setThead] = useState<string[]>([]);
 
     useEffect(() => {
-        const fetchBooks = async () => {
-            const response = await getBooks();
-            setBooks(response);
-        };
-        fetchBooks();
-    }, [])
-
-    useEffect(() => {
-        const keys = Object.keys(books[0] || {});
+        const keys = Object.keys(props.booksData[0] || {});
         setThead(keys);
-    }, [books]);
+    }, [props.booksData]);
 
     return (
         <table id='book-table'>
@@ -42,7 +31,7 @@ const Table = () => {
                 </tr>
             </thead>
             <tbody>
-                {books.map((book) => (
+                {props.booksData.map((book) => (
                     <tr key={book.id}>
                         <td>{book.id.substring(0, 12)}</td>
                         <td>{book.nomeLivro}</td>
