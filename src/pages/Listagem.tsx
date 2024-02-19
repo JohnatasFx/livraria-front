@@ -1,8 +1,8 @@
-import './app.css';
+import './styles/listagem.css';
 import { useEffect, useState } from 'react';
-import { api } from './lib/api';
-import Header from './components/Header';
-import Table from './components/Table';
+import { api } from '../lib/api';
+import Header from '../components/Header';
+import Table from '../components/Table';
 
 const getBooks = async () => {
   const response = await api.get('/book/all');
@@ -17,7 +17,7 @@ interface Book {
   preco: number;
 }
 
-export default function App() {
+export default function Listagem() {
 
   const [books, setBooks] = useState<Book[]>([]);
   const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);

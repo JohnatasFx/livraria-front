@@ -8,8 +8,8 @@ export default function Header() {
         <img src={logo} alt="" className="src" />
       </div>
       <div className="menu-container">
-        <a href="" className="ref">Listar Livros</a>
-        <a href="" className="ref">Cadastrar Livros</a>
+        <a href="/" className="ref">Listar Livros</a>
+        <a href="/cadastro" className="ref">Cadastrar Livros</a>
       </div>
     </div>
   );
