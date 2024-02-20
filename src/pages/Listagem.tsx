@@ -3,18 +3,12 @@ import { useEffect, useState } from 'react';
 import { api } from '../lib/api';
 import Header from '../components/Header';
 import Table from '../components/Table';
+import Book from '../interfaces/ibook'
 
 const getBooks = async () => {
   const response = await api.get('/book/all');
   console.log(response.data);
   return response.data;
-}
-
-interface Book {
-  id: string;
-  nomeLivro: string;
-  nomeAutor: string;
-  preco: number;
 }
 
 export default function Listagem() {
