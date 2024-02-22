@@ -1,8 +1,23 @@
 import Header from "../components/Header";
-import "./styles/cadastro.css";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Book from "../interfaces/ibook";
 import { api } from "../lib/api";
 
-export default function Cadastro() {
+export default function Editar() {
+    
+    const [book, setBook] = useState<Book>();
+    
+    const { id } = useParams();
+
+    useEffect(() => {
+        const getBook = async () => {
+            const response = await api.get(`/book?id=${id}`)
+            setBook(response.data);
+        }
+
+        getBook();
+    });
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -16,15 +31,16 @@ export default function Cadastro() {
             preco: parseFloat(preco),
         }
 
-        const response = await api.post("/book", livro);
+        const response = await api.put("/book", {...livro, id});
 
-        if (response.status !== 201) {
-            alert("Erro ao cadastrar livro.");
+        if (response.status !== 200) {
+            alert("Erro ao editar livro.");
             return;
         }
 
-        if (response.status == 201) {
-            alert("Livro cadastrado com sucesso.");
+        if (response.status == 200) {
+            alert("Livro editado com sucesso.");
+            window.location.href = "/";
         }
 
         console.log(livro);
@@ -34,29 +50,29 @@ export default function Cadastro() {
         <main>
             <Header />
             <div id="content">
-                <div className="title-content">
-                    <h1>Cadastro</h1>
+                <div className='title-content'>
+                    <h1> Edição </h1>
                 </div>
 
                 <div className="form-content">
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="nomeLivro">Nome do Livro</label>
-                            <input type="text" name="nomeLivro" id="nomeLivro" />
+                            <input type="text" name="nomeLivro" id="nomeLivro" defaultValue={book?.nomeLivro}/>
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="nomeLivro">Nome do Autor</label>
-                            <input type="text" name="nomeAutor" id="nomeAutor" />
+                            <input type="text" name="nomeAutor" id="nomeAutor" defaultValue={book?.nomeAutor}/>
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="nomeLivro">Preço do Livro</label>
-                            <input type="text" name="preco" id="preco" />
+                            <input type="text" name="preco" id="preco" defaultValue={book?.preco}/>
                         </div>
 
                         <div className="form-group">
-                            <button type="submit">Cadastrar</button>
+                            <button type="submit"> Editar </button>
                         </div>
                     </form>
                 </div>

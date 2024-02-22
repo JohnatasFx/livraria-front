@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import {XCircle, SquarePen} from "lucide-react"; 
 import "./style.css"
-
-interface Book {
-    id: string;
-    nomeLivro: string;
-    nomeAutor: string;
-    preco: number;
-  }
+import Book from "../../interfaces/ibook";
+import columns from "./columns";
 
 interface TableProps {
     booksData: Book[];
@@ -14,20 +11,15 @@ interface TableProps {
 
 const Table = (props: TableProps) => {
 
-    const [thead, setThead] = useState<string[]>([]);
-
-    useEffect(() => {
-        const keys = Object.keys(props.booksData[0] || {});
-        setThead(keys);
-    }, [props.booksData]);
-
     return (
         <table id='book-table'>
             <thead>
                 <tr>
-                    {thead.map((head) => (
-                        <th key={head}>{head}</th>
-                    ))}
+                    {
+                      columns.map( (column) => {
+                        return <th colSpan={column.colspan}>{column.name}</th>
+                      } )  
+                    }
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +29,8 @@ const Table = (props: TableProps) => {
                         <td>{book.nomeLivro}</td>
                         <td>{book.nomeAutor}</td>
                         <td>{book.preco}</td>
+                        <td>{<Link to={`/editar/${book.id}`}> <SquarePen color="#0d8ed6"/></Link>}</td>
+                        <td>{<XCircle color="#ea4335"/>}</td>
                     </tr>
                 ))}
             </tbody>

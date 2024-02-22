@@ -33,7 +33,7 @@ export default function Listagem() {
         return book.nomeLivro.toLowerCase().includes(event.target.value.toLowerCase());
       });
       setFilteredBooks(results);
-    }else{
+    } else {
       setFilteredBooks(books);
     }
   }
