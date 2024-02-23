@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {XCircle, SquarePen} from "lucide-react"; 
 import "./style.css"
@@ -30,7 +29,7 @@ const Table = (props: TableProps) => {
                         <td>{book.nomeAutor}</td>
                         <td>{book.preco}</td>
                         <td>{<Link to={`/editar/${book.id}`}> <SquarePen color="#0d8ed6"/></Link>}</td>
-                        <td>{<XCircle color="#ea4335"/>}</td>
+                        <td>{<Link to={`/excluir/${book.id}`}> <XCircle color="#ea4335"/></Link>}</td>
                     </tr>
                 ))}
             </tbody>

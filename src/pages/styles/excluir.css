@@ -1,0 +1,66 @@
+main{
+    display: flex;
+    flex-direction: column;
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: #333;
+}
+
+#content{
+    width: 100%;
+}
+
+.title-content{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 3%;
+    display: block;
+}
+
+.title-content h1{
+    color: #fff;
+    font-size: 48px;
+    font-family: sans-serif;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.title-content h2{
+    color: #fff;
+    font-size: 28px;
+    font-family: sans-serif;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.button {
+    width: 100%;
+    max-width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.Cancelar.button{
+    background-color: #f5f5f5;
+    margin-right: 20px;
+}
+
+.Cancelar.button:hover{
+    background-color: #9d9d9d
+}
+
+.Confirmar.button{
+    background-color: #a12929;
+}
+
+.Confirmar.button:hover{
+    background-color: #601e1e;
+}
