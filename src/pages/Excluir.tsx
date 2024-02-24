@@ -18,7 +18,7 @@ export default function Excluir() {
         }
 
         getBook();
-    })
+    });
 
     const handleClick = async (confirm: boolean) => {
         if (confirm) {
@@ -31,7 +31,7 @@ export default function Excluir() {
             window.location.href = "/";
         }
 
-    }
+    };
 
     return (
         <main>
@@ -45,5 +45,5 @@ export default function Excluir() {
                 </div>
             </div>
         </main>
-    )
+    );
 }
