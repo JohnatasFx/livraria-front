@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from '../../assets/logo.png'
 import './style.css'
 
@@ -7,9 +8,10 @@ export default function Header() {
       <div className="logo-container">
         <img src={logo} alt="" className="src" />
       </div>
+      
       <div className="menu-container">
-        <a href="/" className="ref">Listar Livros</a>
-        <a href="/cadastro" className="ref">Cadastrar Livros</a>
+        <Link to="/">Listar Livros</Link>
+        <Link to="/cadastro">Cadastrar Livros</Link>
       </div>
     </div>
   );
