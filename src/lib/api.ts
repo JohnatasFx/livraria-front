@@ -1,5 +1,5 @@
 import axios from "axios";
 
-const BASE_URL_API = process.env.BASE_URL_API || "http://localhost:3000"
+const VITE_BASE_URL_API = process.env.VITE_BASE_URL_API || "http://localhost:3000"
 
-export const api = axios.create({baseURL: BASE_URL_API});
+export const api = axios.create({baseURL: VITE_BASE_URL_API});
